@@ -1,7 +1,7 @@
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import rename from 'gulp-rename';
-
+import sassGlob from 'gulp-sass-glob'
 import cleanCss from 'gulp-clean-css';
 import webpcss from 'gulp-webpcss';
 import autoPrefixer from 'gulp-autoprefixer';
@@ -17,6 +17,7 @@ export const scss= () =>{
           message:"Error: <%= error.message %>"
         })))
     .pipe(app.plugins.replace(/@img\//g,'../img/'))
+    .pipe(sassGlob())
     .pipe(sass({
       outputStyle:'expanded'
     }))
